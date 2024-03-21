@@ -2,6 +2,8 @@ package com.adresse.vue;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class UserForm extends JDialog{
     private JLabel jlName;
@@ -23,5 +25,22 @@ public class UserForm extends JDialog{
         setMaximumSize(new Dimension(800,600));
         setMinimumSize(new Dimension(800,600));
         setVisible(true);
+        //écouteur événement bt valider
+        btValid.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //récupérer le contenu du nom
+                String name = tfName.getText();
+                String password = String.valueOf(pfPassword.getPassword());
+                System.out.println(name);
+            }
+        });
+        //ecouteur événement bt annuler
+        btCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("on à cliqué sur le bouton annulé");
+            }
+        });
     }
 }
