@@ -36,4 +36,33 @@ public class ManagerUtilisateur {
         //retourne un objet utilisateur complet
         return userAdd;
     }
+
+    public static Utilisateur findByMail(Utilisateur user) throws SQLException{
+        Utilisateur userRecup = new Utilisateur();
+        try {
+            //connexion à la bdd
+            Statement smt = connexion.createStatement();
+            //requête
+            String req = "SELECT id, name, firstname, password FROM users WHERE email = ?";
+            //préparer la requête
+            PreparedStatement preparedStatement = connexion.prepareStatement(req);
+            //binder le paramètre
+            preparedStatement.setString(1, user.getEmail());
+            //exécuter la requête
+            ResultSet reponse = preparedStatement.executeQuery();
+
+            while (reponse.next()) {
+                //setter le resultat de la réponse dans userRecup
+                userRecup.setId(reponse.getInt("id"));
+                userRecup.setName(reponse.getString(2));
+                userRecup.setFirstname(reponse.getString(3));
+                userRecup.setEmail(reponse.getString(4));
+                userRecup.setPassword(reponse.getString(5));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return userRecup;
+    }
 }
