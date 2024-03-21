@@ -1,7 +1,7 @@
-package com.adresse.model;
+package com.adresse.db;
 import java.sql.*;
 
-import static com.adresse.model.Env.*;
+import static com.adresse.db.Env.*;
 public class Database {
     private static final Connection connexion;
     static {
