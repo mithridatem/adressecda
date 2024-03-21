@@ -43,26 +43,28 @@ public class ManagerUtilisateur {
             //connexion à la bdd
             Statement smt = connexion.createStatement();
             //requête
-            String req = "SELECT id, name, firstname, password FROM users WHERE email = ?";
+            String req = "SELECT id, name, firstname, email, password FROM users WHERE email = ?";
             //préparer la requête
             PreparedStatement preparedStatement = connexion.prepareStatement(req);
             //binder le paramètre
             preparedStatement.setString(1, user.getEmail());
             //exécuter la requête
             ResultSet reponse = preparedStatement.executeQuery();
-
+            //boucle pour parcourir le résultat
             while (reponse.next()) {
-                //setter le resultat de la réponse dans userRecup
-                userRecup.setId(reponse.getInt("id"));
-                userRecup.setName(reponse.getString(2));
-                userRecup.setFirstname(reponse.getString(3));
-                userRecup.setEmail(reponse.getString(4));
-                userRecup.setPassword(reponse.getString(5));
+                if(reponse.getString(1) !=null){
+                    //setter les nouvelles valeurs
+                    userRecup.setId(reponse.getInt(1));
+                    userRecup.setName(reponse.getString("name"));
+                    userRecup.setFirstname(reponse.getString("firstname"));
+                    userRecup.setEmail(reponse.getString("email"));
+                    userRecup.setPassword(reponse.getString("password"));
+                }
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        //retourne l'objet Utilisateur
         return userRecup;
     }
 }
