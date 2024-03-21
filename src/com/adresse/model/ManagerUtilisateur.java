@@ -2,8 +2,8 @@ package com.adresse.model;
 
 import java.sql.*;
 public class ManagerUtilisateur {
-    private final Connection connexion = Database.getConnexion();
-    public Utilisateur create(Utilisateur user) throws SQLException {
+    private static final Connection connexion = Database.getConnexion();
+    public static Utilisateur create(Utilisateur user) throws SQLException {
         //créer un objet Utilisateur
         Utilisateur userAdd = new Utilisateur();
         //try la requête
