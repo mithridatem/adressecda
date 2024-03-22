@@ -17,6 +17,8 @@ public class UserForm extends JDialog{
     private JButton btValid;
     private JButton btCancel;
     private JPanel jpMain;
+    private JLabel jlPasswordVerif;
+    private JPasswordField pfPasswordVerif;
 
     public UserForm(JDialog parent){
         super(parent);
@@ -26,20 +28,13 @@ public class UserForm extends JDialog{
         setMinimumSize(new Dimension(800,600));
         setVisible(true);
         //écouteur événement bt valider
+
         btValid.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //récupérer le contenu du nom
-                String name = tfName.getText();
+                tfName.getText();
                 String password = String.valueOf(pfPassword.getPassword());
-                System.out.println(name);
-            }
-        });
-        //ecouteur événement bt annuler
-        btCancel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("on à cliqué sur le bouton annulé");
+                System.out.println("on a clique sur le bouton valider");
             }
         });
     }
