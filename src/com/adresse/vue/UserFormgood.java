@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UserForm extends JDialog{
+public class UserFormgood extends JDialog {
     private JPanel jpMain;
     private JTextField tfName;
     private JLabel jlName;
@@ -22,7 +22,8 @@ public class UserForm extends JDialog{
     private JLabel jlVerifPassword;
     private JButton btValid;
     private JButton btCancel;
-    public UserForm(JDialog parent) {
+
+    public UserFormgood(JDialog parent) {
         super(parent);
         setTitle("Ajouter un compte utilisateur");
         setContentPane(jpMain);
@@ -42,6 +43,7 @@ public class UserForm extends JDialog{
             }
         });
     }
+
     public void createUser() {
         //récupérer le contenu des 5 champs de texte
         String name = tfName.getText();
@@ -87,4 +89,5 @@ public class UserForm extends JDialog{
                 JOptionPane.INFORMATION_MESSAGE);
         dispose();
     }
+
 }
