@@ -1,4 +1,4 @@
-import com.adresse.vue.UserFormgood;
+import com.adresse.vue.UserForm;
 
 import java.sql.SQLException;
 
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        UserFormgood userFormgood = new UserFormgood(null);
+        UserForm userForm = new UserForm(null);
 
     }
 }
