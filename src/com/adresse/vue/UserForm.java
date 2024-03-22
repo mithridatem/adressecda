@@ -2,31 +2,26 @@ package com.adresse.vue;
 
 import com.adresse.model.Utilisateur;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Locale;
 
-
-public class UserForm extends JDialog {
-    private JLabel jlName;
+public class UserForm extends JDialog{
+    private JPanel jpMain;
     private JTextField tfName;
-    private JLabel jlFirstname;
+    private JLabel jlName;
     private JTextField tfFirstname;
-    private JLabel jlEmail;
+    private JLabel jlFirstname;
     private JTextField tfEmail;
-    private JLabel jlPassword;
+    private JLabel jlEmail;
     private JPasswordField pfPassword;
+    private JLabel jlPassword;
+    private JPasswordField pfPasswordVerif;
+    private JLabel jlVerifPassword;
     private JButton btValid;
     private JButton btCancel;
-    private JPanel jpMain;
-    private JLabel jlPasswordVerif;
-    private JPasswordField pfPasswordVerif;
-    private JLabel jlInfo;
-
     public UserForm(JDialog parent) {
         super(parent);
         setTitle("Ajouter un compte utilisateur");
@@ -34,23 +29,19 @@ public class UserForm extends JDialog {
         setMaximumSize(new Dimension(800, 600));
         setMinimumSize(new Dimension(800, 600));
         setVisible(true);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //écouteur événement bt valider
-
         btValid.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createUser();
+
             }
         });
         btCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createUser();
+
             }
         });
     }
-
     public void createUser() {
         //récupérer le contenu des 5 champs de texte
         String name = tfName.getText();
@@ -81,6 +72,7 @@ public class UserForm extends JDialog {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
+
     public void cancelUser() {
         //vider les champs
         tfName.setText("");
@@ -96,4 +88,3 @@ public class UserForm extends JDialog {
         dispose();
     }
 }
-
